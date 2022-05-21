@@ -2,7 +2,7 @@ const schedule = require('node-schedule')
 const { exec } = require("child_process");
 
 module.exports = () => {
-    schedule.scheduleJob('*/10 * * * * *', function() {
+    schedule.scheduleJob(process.env.CRON_SPEC_STRING, function() {
         const date = new Date()
         const path = `files/${date.getFullYear()}-${date.getMonth()}-${date.getDate()}.sql`
         console.log(path);
